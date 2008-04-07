@@ -1,0 +1,25 @@
+---
+name: POE-Component-IRC-Plugin-HTML-AttributeInfo
+version: 0.001
+author:
+  - 'Zoffix Znet <zoffix@cpan.org>'
+abstract: HTML attribute info lookup from IRC
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+requires:
+  Carp: 1.04
+  POE: 0.9999
+  POE::Component::IRC::Plugin::BaseWrap: 0.004
+build_requires:
+  Test::More: 0
+provides:
+  POE::Component::IRC::Plugin::HTML::AttributeInfo:
+    file: lib/POE/Component/IRC/Plugin/HTML/AttributeInfo.pm
+    version: 0.001
+  POE::Component::IRC::Plugin::HTML::AttributeInfo::Data:
+    file: lib/POE/Component/IRC/Plugin/HTML/AttributeInfo/Data.pm
+generated_by: Module::Build version 0.2808
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
