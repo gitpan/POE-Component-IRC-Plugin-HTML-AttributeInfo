@@ -3,6 +3,8 @@ package POE::Component::IRC::Plugin::HTML::AttributeInfo::Data;
 use strict;
 use warnings;
 
+our $VERSION = '0.001';
+
 sub _data {
     return (
           {

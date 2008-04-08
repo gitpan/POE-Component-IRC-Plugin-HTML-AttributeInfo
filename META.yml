@@ -1,6 +1,6 @@
 ---
 name: POE-Component-IRC-Plugin-HTML-AttributeInfo
-version: 0.001
+version: 0.002
 author:
   - 'Zoffix Znet <zoffix@cpan.org>'
 abstract: HTML attribute info lookup from IRC
@@ -16,9 +16,10 @@ build_requires:
 provides:
   POE::Component::IRC::Plugin::HTML::AttributeInfo:
     file: lib/POE/Component/IRC/Plugin/HTML/AttributeInfo.pm
-    version: 0.001
+    version: 0.002
   POE::Component::IRC::Plugin::HTML::AttributeInfo::Data:
     file: lib/POE/Component/IRC/Plugin/HTML/AttributeInfo/Data.pm
+    version: 0.001
 generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
