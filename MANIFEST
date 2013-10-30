@@ -2,6 +2,7 @@ Build.PL
 Changes
 MANIFEST
 README
+LICENSE
 lib/POE/Component/IRC/Plugin/HTML/AttributeInfo.pm
 lib/POE/Component/IRC/Plugin/HTML/AttributeInfo/Data.pm
 t/00-load.t
@@ -11,3 +12,4 @@ t/kwalitee.t
 examples/attribute_bot.pl
 Makefile.PL
 META.yml
+META.json

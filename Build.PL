@@ -7,6 +7,7 @@ my $builder = Module::Build->new(
     license             => 'perl',
     dist_author         => 'Zoffix Znet <zoffix@cpan.org>',
     dist_version_from   => 'lib/POE/Component/IRC/Plugin/HTML/AttributeInfo.pm',
+    configure_requires => { 'Module::Build' => 0.40 },
     build_requires => {
         'Test::More' => 0,
     },
@@ -14,6 +15,7 @@ my $builder = Module::Build->new(
         'Carp'                                  => 1.04,
         'POE'                                   => 0.9999,
         'POE::Component::IRC::Plugin::BaseWrap' => 0.004,
+        perl                                    => '5.006',
     },
     add_to_cleanup      => [ 'POE-Component-IRC-Plugin-HTML-AttributeInfo-*' ],
     create_makefile_pl => 'traditional',
