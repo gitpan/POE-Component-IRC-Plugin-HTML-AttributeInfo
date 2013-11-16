@@ -1,5 +1,10 @@
 Revision history for POE-Component-IRC-Plugin-HTML-AttributeInfo
 
+0.004   2013-11-15
+        - Fixed a fatal bug that occured due to a new functionality
+          in PoCo::IRC::BaseWrap
+        - Moved RELEASE tests to xt/
+
 0.003   2013-10-30
         - Minor fixes to comply with the specs and Kwalitee game
 

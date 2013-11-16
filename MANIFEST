@@ -6,9 +6,9 @@ LICENSE
 lib/POE/Component/IRC/Plugin/HTML/AttributeInfo.pm
 lib/POE/Component/IRC/Plugin/HTML/AttributeInfo/Data.pm
 t/00-load.t
-t/pod-coverage.t
-t/pod.t
-t/kwalitee.t
+xt/pod-coverage.t
+xt/pod.t
+xt/kwalitee.t
 examples/attribute_bot.pl
 Makefile.PL
 META.yml

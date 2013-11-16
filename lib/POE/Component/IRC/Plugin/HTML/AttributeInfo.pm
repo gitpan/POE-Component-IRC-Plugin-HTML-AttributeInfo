@@ -3,7 +3,7 @@ package POE::Component::IRC::Plugin::HTML::AttributeInfo;
 use warnings;
 use strict;
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 use Carp;
 use POE;
@@ -21,7 +21,7 @@ sub _make_default_args {
         trigger          => qr/^attr\s+(?=\S+)/i,
         response_event   => 'irc_html_attribute',
         line_length      => 350,
-        triggers         => {
+        cmdtriggers      => {
             list_attr =>
             qr/^ l (?:ist)? \s* a (?:ttr (?:ibute s? )? )? \s+ (?=\S+) /xi,
 
@@ -54,7 +54,7 @@ sub _make_response_message {
     $self->{debug}
         and carp "AttrInfo: input: `$in`";
 
-    my $trig_ref = $self->{triggers};
+    my $trig_ref = $self->{cmdtriggers};
 
     if ( $in =~ s/$trig_ref->{list_attr}// ) {
         $self->{debug}
@@ -306,6 +306,8 @@ sub _prepare_output {
 1;
 __END__
 
+=encoding utf8
+
 =head1 NAME
 
 POE::Component::IRC::Plugin::HTML::AttributeInfo - HTML attribute info lookup from IRC
@@ -405,7 +407,7 @@ It accepts input from public channel events, C</notice> messages as well
 as C</msg> (private messages); although that can be configured at will.
 
 The functionality and arguments for each of plugin's command is described
-in section about C<triggers> constructor's argument.
+in section about C<cmdtriggers> constructor's argument.
 
 =head1 CONSTRUCTOR
 
@@ -428,7 +430,7 @@ in section about C<triggers> constructor's argument.
                 addressed        => 1,
                 line_length      => 350,
                 trigger          => qr/^attr\s+(?=\S+)/i,
-                triggers         => {
+                cmdtriggers         => {
                     list_attr   => qr/^ l (?:ist)? \s* a (?:ttr (?:ibute s? )? )? \s+ (?=\S+) /xi,
                     list_el     => qr/^ l (?:ist)? \s* e (?:l (?:ements?)? )? \s+ (?=\S+) /xi,
                     type        => qr/^ t (?: ype )? \s+ (?=\S+) /xi,
@@ -514,9 +516,9 @@ trigger will be B<removed> from the message, therefore make sure your
 trigger doesn't match the actual data that needs to be processed.
 B<Defaults to:> C<qr/^attr\s+(?=\S+)/i>
 
-=head3 C<triggers>
+=head3 C<cmdtriggers>
 
-    triggers         => {
+    cmdtriggers         => {
         list_attr   => qr/^ l (?:ist)? \s* a (?:ttr (?:ibute s? )? )? \s+ (?=\S+) /xi,
         list_el     => qr/^ l (?:ist)? \s* e (?:l (?:ement s?)? )? \s+ (?=\S+) /xi,
         type        => qr/^ t (?: ype )? \s+ (?=\S+) /xi,
@@ -528,15 +530,15 @@ B<Defaults to:> C<qr/^attr\s+(?=\S+)/i>
     },
 
 B<Optional>. After the C<trigger> (see above) is stripped the plugin will
-match the input on command regexes specified via C<triggers> (note the
+match the input on command regexes specified via C<cmdtriggers> (note the
 plural form) argument; if none match the user will be informed about
 using an invalid command to the plugin.
-The C<triggers> argument takes a hashref as a value;
+The C<cmdtriggers> argument takes a hashref as a value;
 keys of that hashref are command names and values are regexes
 (C<qr//>) which trigger the command.
 B<Note:> anything matching the regex will be stripped from
 the input so make sure it doesn't match actual data. B<Note 2:> if you are
-redefining the triggers you must specify entire hashref. The possible
+redefining the cmdtriggers you must specify entire hashref. The possible
 keys/values are as follows:
 
 =head4 C<list_attr>
@@ -746,14 +748,14 @@ The C<who> key will contain the usermask of the user who made the request.
     { 'what' => 'de width', }
 
 The C<what> key will contain user's message after C<trigger> was stripped
-but before any of the C<triggers> are stripped (see CONSTRUCTOR for
-description of C<trigger> and C<triggers> arguments)
+but before any of the C<cmdtriggers> are stripped (see CONSTRUCTOR for
+description of C<trigger> and C<cmdtriggers> arguments)
 
 =head3 C<message>
 
     { 'message' => 'HTMLAttrBot, attr de width' }
 
-The C<message> key will contain user's full message (before any triggers
+The C<message> key will contain user's full message (before any cmdtriggers
 are stripped).
 
 =head3 C<type>

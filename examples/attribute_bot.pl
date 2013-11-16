@@ -2,13 +2,13 @@
 
 use strict;
 use warnings;
-use lib '../lib';
+use lib qw(../lib  lib);
 
 use POE qw(Component::IRC  Component::IRC::Plugin::HTML::AttributeInfo);
 
 my $irc = POE::Component::IRC->spawn(
     nick        => 'HTMLAttrBot',
-    server      => '127.0.0.1',
+    server      => 'irc.freenode.net',
     NoDNS       => 1,
     port        => 6667,
     ircname     => 'HTML Attributes Lookup Bot',

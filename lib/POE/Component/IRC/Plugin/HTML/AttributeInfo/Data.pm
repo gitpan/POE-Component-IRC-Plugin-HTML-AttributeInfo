@@ -3,7 +3,7 @@ package POE::Component::IRC::Plugin::HTML::AttributeInfo::Data;
 use strict;
 use warnings;
 
-our $VERSION = '0.003';
+our $VERSION = '0.004';
 
 sub _data {
     return (
@@ -3547,6 +3547,8 @@ sub _valid_attrs {
 
 1;
 __END__
+
+=encoding utf8
 
 =head1 NAME
 
